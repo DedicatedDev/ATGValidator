@@ -60,10 +60,10 @@ public struct EqualityRule<T: Equatable>: Rule {
 
      - note: Checks if the passed in `value` is equal to the `test` value.
      */
-    public func validate(value: Any) -> Result {
+    public func validate(value: Any) -> ValidationResult {
 
         guard let valueToTest = value as? T else {
-            return Result.fail(value, withErrors: [ValidationError.invalidType])
+            return ValidationResult.fail(value, withErrors: [ValidationError.invalidType])
         }
 
         if mode == .equal {

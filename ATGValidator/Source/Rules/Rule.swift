@@ -41,7 +41,7 @@ public protocol Rule {
      - parameter value: The value to be passed in for validation.
      - returns: A result object with success or failure with errors.
      */
-    func validate(value: Any) -> Result
+    func validate(value: Any) -> ValidationResult
 }
 
 public extension Rule {

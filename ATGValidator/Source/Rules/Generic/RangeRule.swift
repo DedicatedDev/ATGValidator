@@ -51,10 +51,10 @@ public struct RangeRule<T: Comparable>: Rule {
 
      - note: Checks if the passed in `value` is between `min` and `max` both values including.
      */
-    public func validate(value: Any) -> Result {
+    public func validate(value: Any) -> ValidationResult {
 
         guard let valueToTest = value as? T else {
-            return Result.fail(value, withErrors: [ValidationError.invalidType])
+            return ValidationResult.fail(value, withErrors: [ValidationError.invalidType])
         }
 
         let isValid = (valueToTest >= min && valueToTest <= max)

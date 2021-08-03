@@ -73,11 +73,11 @@ public struct CharacterSetRule: Rule {
      - note: Checks if the passed in `value` and the character set elements has relations mentioned
      using mode.
      */
-    public func validate(value: Any) -> Result {
+    public func validate(value: Any) -> ValidationResult {
 
         guard let inputValue = value as? String else {
 
-            return Result.fail(value, withErrors: [ValidationError.invalidType])
+            return ValidationResult.fail(value, withErrors: [ValidationError.invalidType])
         }
 
         var valueToBeValidated = inputValue
@@ -102,7 +102,7 @@ public struct CharacterSetRule: Rule {
             isValid = valueToBeValidated.rangeOfCharacter(from: characterSet) == nil
         }
 
-        return isValid ? Result.succeed(valueToBeValidated) : Result.fail(valueToBeValidated, withErrors: [error])
+        return isValid ? ValidationResult.succeed(valueToBeValidated) : ValidationResult.fail(valueToBeValidated, withErrors: [error])
     }
 
     private func numberOfOccurences(inString string: String, of characterSet: CharacterSet) -> Int {

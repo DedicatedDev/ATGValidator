@@ -27,7 +27,7 @@
  - note: The UI elements (eg: UITextField) should conform to this protocol to get the validation
  support.
  */
-public protocol ValidatableInterface: class, Validatable {
+public protocol ValidatableInterface: AnyObject, Validatable {
 
     /**
      Method to add/remove event listeners for validation on input change
@@ -73,12 +73,12 @@ extension ValidatableInterface where Self: Hashable {
      Validation handler to be executed on changes in validation state. This will be called only if
      the `validateOnInputChange` is called with true.
      */
-    public var validationHandler: ValidationHandler? {
+    public var validateHandler: ValidateHandler? {
         get {
-            return ValidatorCache.validationHandlers[self.hashValue]
+            return ValidatorCache.validateHandlers[self.hashValue]
         }
         set {
-            ValidatorCache.validationHandlers[self.hashValue] = newValue
+            ValidatorCache.validateHandlers[self.hashValue] = newValue
         }
     }
 
@@ -86,7 +86,7 @@ extension ValidatableInterface where Self: Hashable {
      Validation handler to be executed on changes in validation state. This will be called only if
      the interface element is added to a form validator.
      */
-    public var formHandler: ValidationHandler? {
+    public var formHandler: ValidateHandler? {
         get {
             return ValidatorCache.formHandlers[self.hashValue]
         }
@@ -99,7 +99,7 @@ extension ValidatableInterface where Self: Hashable {
     public func cleanUpFromValidatorCache() {
 
         validationRules = nil
-        validationHandler = nil
+        validateHandler = nil
         formHandler = nil
     }
 }

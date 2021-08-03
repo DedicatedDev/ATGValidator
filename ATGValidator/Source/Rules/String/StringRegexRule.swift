@@ -56,11 +56,11 @@ public struct StringRegexRule: Rule {
 
      - note: Checks if the passed in `value` matches the regular expression in `regex`.
      */
-    public func validate(value: Any) -> Result {
+    public func validate(value: Any) -> ValidationResult {
 
         guard let inputValue = value as? String else {
 
-            return Result.fail(value, withErrors: [ValidationError.invalidType])
+            return ValidationResult.fail(value, withErrors: [ValidationError.invalidType])
         }
 
         var valueToBeValidated = inputValue
@@ -73,7 +73,7 @@ public struct StringRegexRule: Rule {
 
         let isValid = NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: valueToBeValidated)
 
-        return isValid ? Result.succeed(valueToBeValidated) : Result.fail(valueToBeValidated, withErrors: [error])
+        return isValid ? ValidationResult.succeed(valueToBeValidated) : ValidationResult.fail(valueToBeValidated, withErrors: [error])
     }
 }
 

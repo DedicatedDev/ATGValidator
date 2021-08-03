@@ -109,7 +109,7 @@ extension UITextView: ValidatableInterface {
         }
 
         let result = satisfyAll(rules: rules)
-        validationHandler?(result)
+        validateHandler?(result)
         formHandler?(result)
     }
 }

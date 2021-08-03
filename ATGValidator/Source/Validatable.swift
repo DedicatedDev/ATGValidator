@@ -32,7 +32,7 @@ public protocol Validatable {
      - parameter rules: Array of rules to be validated.
      - returns: Result object of the validation.
      */
-    func satisfyAll(rules: [Rule]) -> Result
+    func satisfyAll(rules: [Rule]) -> ValidationResult
     /**
      Method to validate atleast one of the rules.  Result is success if any of the rules in array
      succeed.
@@ -40,7 +40,7 @@ public protocol Validatable {
      - parameter rules: Array of rules to be validated.
      - returns: Result of the validation.
      */
-    func satisfyAny(rules: [Rule]) -> Result
+    func satisfyAny(rules: [Rule]) -> ValidationResult
 }
 
 extension Validatable {
@@ -49,18 +49,18 @@ extension Validatable {
         return self
     }
 
-    public func satisfyAll(rules: [Rule]) -> Result {
+    public func satisfyAll(rules: [Rule]) -> ValidationResult {
 
-        var result = Result.succeed(inputValue)
+        var result = ValidationResult.succeed(inputValue)
 
         rules.forEach({ result = result.and($0) })
 
         return result
     }
 
-    public func satisfyAny(rules: [Rule]) -> Result {
+    public func satisfyAny(rules: [Rule]) -> ValidationResult {
 
-        var result = Result.fail(inputValue, withErrors: [])
+        var result = ValidationResult.fail(inputValue, withErrors: [])
 
         rules.forEach({ result = result.or($0) })
 

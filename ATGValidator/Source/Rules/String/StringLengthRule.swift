@@ -165,11 +165,11 @@ public struct StringLengthRule: Rule {
 
      - note: Checks if the passed in `value`'s length is between `min` and `max` both including.
      */
-    public func validate(value: Any) -> Result {
+    public func validate(value: Any) -> ValidationResult {
 
         guard let inputValue = value as? String else {
 
-            return Result.fail(value, withErrors: [ValidationError.invalidType])
+            return ValidationResult.fail(value, withErrors: [ValidationError.invalidType])
         }
 
         var valueToBeValidated = inputValue
@@ -186,6 +186,6 @@ public struct StringLengthRule: Rule {
 
         let isValid = valueToBeValidated.count >= min && valueToBeValidated.count <= max
 
-        return isValid ? Result.succeed(inputValue) : Result.fail(inputValue, withErrors: [error])
+        return isValid ? ValidationResult.succeed(inputValue) : ValidationResult.fail(inputValue, withErrors: [error])
     }
 }

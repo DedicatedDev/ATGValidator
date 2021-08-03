@@ -47,11 +47,11 @@ public struct StringValueMatchRule: Rule {
 
      - note: Checks if the passed in `value` is equal to the `base` element's value.
      */
-    public func validate(value: Any) -> Result {
+    public func validate(value: Any) -> ValidationResult {
 
         guard let baseValue = base.inputValue as? String,
             let valueToTest = value as? String else {
-            return Result.fail(value, withErrors: [ValidationError.invalidType])
+            return ValidationResult.fail(value, withErrors: [ValidationError.invalidType])
         }
 
         let isValid = (baseValue == valueToTest)

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -28,7 +28,7 @@
 		96524496213EB1AD00EE298B /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96524495213EB1AD00EE298B /* ValidationError.swift */; };
 		9652449B213EB7B800EE298B /* RangeRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9652449A213EB7B800EE298B /* RangeRule.swift */; };
 		9652449D213EC2F900EE298B /* StringRegexRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9652449C213EC2F900EE298B /* StringRegexRule.swift */; };
-		96554D19213807BB0089FF5C /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96554D16213807BB0089FF5C /* Result.swift */; };
+		96554D19213807BB0089FF5C /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96554D16213807BB0089FF5C /* ValidationResult.swift */; };
 		96554D1A213807BB0089FF5C /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96554D18213807BB0089FF5C /* Rule.swift */; };
 		96554D1E213807FD0089FF5C /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96554D1C213807FD0089FF5C /* Validatable.swift */; };
 		96554D30213808A40089FF5C /* StringLengthRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96554D2F213808A40089FF5C /* StringLengthRule.swift */; };
@@ -76,7 +76,7 @@
 		96524495213EB1AD00EE298B /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		9652449A213EB7B800EE298B /* RangeRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeRule.swift; sourceTree = "<group>"; };
 		9652449C213EC2F900EE298B /* StringRegexRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringRegexRule.swift; sourceTree = "<group>"; };
-		96554D16213807BB0089FF5C /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		96554D16213807BB0089FF5C /* ValidationResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
 		96554D18213807BB0089FF5C /* Rule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
 		96554D1C213807FD0089FF5C /* Validatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validatable.swift; sourceTree = "<group>"; };
 		96554D2F213808A40089FF5C /* StringLengthRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringLengthRule.swift; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 			children = (
 				96554D17213807BB0089FF5C /* Rules */,
 				96554D32213824B50089FF5C /* ValidatableInterface */,
-				96554D16213807BB0089FF5C /* Result.swift */,
+				96554D16213807BB0089FF5C /* ValidationResult.swift */,
 				96524495213EB1AD00EE298B /* ValidationError.swift */,
 				96554D1C213807FD0089FF5C /* Validatable.swift */,
 			);
@@ -287,7 +287,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = "Al Tayer Group LLC";
 				TargetAttributes = {
 					964F78062136B750004A6017 = {
@@ -301,7 +301,7 @@
 				};
 			};
 			buildConfigurationList = 964F78012136B750004A6017 /* Build configuration list for PBXProject "ATGValidator" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -368,7 +368,7 @@
 				96524490213E80E800EE298B /* UITextView+ATGValidator.swift in Sources */,
 				96554D34213824C90089FF5C /* ValidatorCache.swift in Sources */,
 				96554D1E213807FD0089FF5C /* Validatable.swift in Sources */,
-				96554D19213807BB0089FF5C /* Result.swift in Sources */,
+				96554D19213807BB0089FF5C /* ValidationResult.swift in Sources */,
 				961F548221400F6900665150 /* PaymentCardType.swift in Sources */,
 				96554D1A213807BB0089FF5C /* Rule.swift in Sources */,
 				96554D382138257A0089FF5C /* UITextField+ATGValidator.swift in Sources */,
@@ -435,6 +435,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -461,7 +462,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -498,6 +499,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -518,7 +520,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -540,6 +542,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = ATGValidator/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -564,6 +567,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = ATGValidator/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

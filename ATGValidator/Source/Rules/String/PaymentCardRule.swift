@@ -65,7 +65,7 @@ public struct PaymentCardRule: Rule {
      object.
      */
 
-    public func validate(value: Any) -> Result {
+    public func validate(value: Any) -> ValidationResult {
 
         guard let cardNum = value as? String else {
             return .fail(value, withErrors: [ValidationError.invalidType])

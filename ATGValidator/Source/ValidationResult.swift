@@ -22,7 +22,7 @@
 //
 
 /// Result structure to hold validation status, errors and value.
-public struct Result {
+public struct ValidationResult {
 
     /// Status enumeration for validation result
     public enum Status {
@@ -48,9 +48,9 @@ public struct Result {
 
      - returns: A result object
      */
-    public static func fail(_ value: Any, withErrors errors: [Error]? = nil) -> Result {
+    public static func fail(_ value: Any, withErrors errors: [Error]? = nil) -> ValidationResult {
 
-        return Result(status: .failure, errors: errors, value: value)
+        return ValidationResult(status: .failure, errors: errors, value: value)
     }
 
     /**
@@ -60,13 +60,13 @@ public struct Result {
 
      - returns: A result object
      */
-    public static func succeed(_ value: Any) -> Result {
+    public static func succeed(_ value: Any) -> ValidationResult {
 
-        return Result(status: .success, errors: nil, value: value)
+        return ValidationResult(status: .success, errors: nil, value: value)
     }
 }
 
-extension Result {
+extension ValidationResult {
 
     /**
      Method to combine result of the passed in rule with caller in a `logical AND` manner.
@@ -76,7 +76,7 @@ extension Result {
 
      - note: The result is a failure if either the caller or the rule's result is failure.
      */
-    internal func and(_ rule: Rule) -> Result {
+    internal func and(_ rule: Rule) -> ValidationResult {
 
         var result = self
         let newResult = rule.validate(value: result.value)
@@ -103,7 +103,7 @@ extension Result {
      This function returns once the first success case is met. All the errors accumulated upto that
      point will be available in the errors array.
      */
-    internal func or(_ rule: Rule) -> Result {
+    internal func or(_ rule: Rule) -> ValidationResult {
 
         var result = self
 
@@ -130,17 +130,17 @@ extension Result {
      - note: The operation merges both the results and sends a unified result object with all errors
      in it.
      */
-    internal func merge(_ other: Result) -> Result {
+    internal func merge(_ other: ValidationResult) -> ValidationResult {
 
         switch (status, other.status) {
         case (.success, .success):
-            return Result.succeed(value)
+            return ValidationResult.succeed(value)
         case (.success, .failure):
-            return Result.fail(value, withErrors: other.errors)
+            return ValidationResult.fail(value, withErrors: other.errors)
         case (.failure, .success):
-            return Result.fail(value, withErrors: errors)
+            return ValidationResult.fail(value, withErrors: errors)
         case (.failure, .failure):
-            return Result.fail(value, withErrors: (errors ?? []) + (other.errors ?? []))
+            return ValidationResult.fail(value, withErrors: (errors ?? []) + (other.errors ?? []))
         }
     }
 }
